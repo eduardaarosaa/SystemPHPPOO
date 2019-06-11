@@ -4,7 +4,7 @@
 // Uma classe abstraí algo do mundo real - Exemplo neste sistema: banco.
 //Toda classe tem um construtor por padrão.
 class ContaCorrente
-{   
+{
     public $conta1;
     private $titular;
     public  $agencia;
@@ -41,6 +41,17 @@ class ContaCorrente
         return $this;
     }
 
+    public function transferir($valor, $conta1)
+    {
+        if(!is_numeric($valor)){
+
+            echo "O valor passado não é um número";
+
+        }
+        $this->sacar($valor);
+        $conta1->depositar($valor);
+        return $this;
+     }
     public function getTitular()
     {
 
@@ -64,7 +75,7 @@ class ContaCorrente
         $this->$atributo = $valor;
     }
 
-    private function protegeAtributo($atributo)
+    public static function protegeAtributo($atributo) //Deixado o metodo estatico ele pode ser acessado por outros objetos.
     //Chamamos de encapsulamento de métodos.
 
     {
@@ -87,5 +98,8 @@ class ContaCorrente
 
         return $this->formataSaldo(900);
     }
+    public function __toString() //metodo mágico - retorna uma mensagem em string.
+    {
+        return "Oi";
+    }
 }
-

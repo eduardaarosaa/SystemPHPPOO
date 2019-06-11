@@ -8,8 +8,8 @@ header('Content-type: text/html; charset=utf-8');
 require "ContaCorrente.php";
 //Instânciando a classe ContaCorrente neste arquivo -- Como se eu estivesse fazendo uma
 //Cópia do arquivo e armazenando na variável.
-
 $conta = new ContaCorrente("João","1212","343434-4","900.00");
+$contaMaria = new ContaCorrente("Maria","1212","343434-4","900.00");
 //É necessário passar os argumentos - Se não dá erro de arguments.
 //Não se pode usar o echo para imprimir um objeto.
 //echo $conta;
@@ -43,3 +43,9 @@ echo $conta->formataSaldo(9090);
 //echo $conta->protegeAtributo("sauhsuahsua"); // Como o metodo é privado. dá um erro - Encapsulamento de metodos.
 
 echo $conta->getSaldo();
+
+$conta->transferir(25,$contaMaria); // Tira da conta do João e colocar na conta da Maria.
+
+var_dump($contaMaria);
+var_dump($conta);
+
